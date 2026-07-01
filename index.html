@@ -7,81 +7,158 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="app-shell">
+  <div class="app">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">PC</div>
+        <div class="logo">PC</div>
         <div>
           <h1>PC Quick Test</h1>
-          <p>Store inspection tool</p>
+          <p>Inspection Tool</p>
         </div>
       </div>
+
       <nav class="nav">
-        <button class="nav-item active" data-tab="display">Display</button>
-        <button class="nav-item" data-tab="keyboard">Keyboard</button>
-        <button class="nav-item" data-tab="speaker">Speaker</button>
-        <button class="nav-item" data-tab="microphone">Microphone</button>
-        <button class="nav-item" data-tab="camera">Camera</button>
+        <button class="nav-btn active" data-tab="display">Display</button>
+        <button class="nav-btn" data-tab="touch">Touch</button>
+        <button class="nav-btn" data-tab="keyboard">Keyboard</button>
+        <button class="nav-btn" data-tab="speaker">Speaker</button>
+        <button class="nav-btn" data-tab="microphone">Microphone</button>
+        <button class="nav-btn" data-tab="camera">Camera</button>
+        <button class="nav-btn" data-tab="battery">Battery</button>
       </nav>
     </aside>
-    <main class="content">
+
+    <main class="main">
       <section id="display" class="panel active">
-        <div class="panel-header">
-          <div><h2>Display Test</h2><p>Check dead pixels, color issues, backlight problems, and panel damage.</p></div>
-          <button id="startDisplayTest" class="primary-btn">Start Fullscreen</button>
+        <div class="panel-head">
+          <h2>Display Test</h2>
+          <button id="startDisplay" class="primary">Fullscreen</button>
         </div>
-        <div class="card-grid">
-          <button class="test-card color-btn" data-start-color="0"><span>White</span></button>
-          <button class="test-card color-btn" data-start-color="1"><span>Black</span></button>
-          <button class="test-card color-btn" data-start-color="2"><span>Red</span></button>
-          <button class="test-card color-btn" data-start-color="3"><span>Green</span></button>
-          <button class="test-card color-btn" data-start-color="4"><span>Blue</span></button>
-          <button class="test-card color-btn" data-start-color="5"><span>Gray</span></button>
-          <button class="test-card color-btn" data-start-color="6"><span>Gradient</span></button>
+
+        <div class="grid">
+          <button class="card color-btn" data-color="0">White</button>
+          <button class="card color-btn" data-color="1">Black</button>
+          <button class="card color-btn" data-color="2">Red</button>
+          <button class="card color-btn" data-color="3">Green</button>
+          <button class="card color-btn" data-color="4">Blue</button>
+          <button class="card color-btn" data-color="5">Gray</button>
+          <button class="card color-btn" data-color="6">Gradient</button>
         </div>
-        <div class="info-card">Space or click changes color. Esc exits fullscreen.</div>
       </section>
+
+      <section id="touch" class="panel">
+        <div class="panel-head">
+          <h2>Touch Test</h2>
+          <div class="actions">
+            <button id="touchFullscreen" class="primary">Fullscreen</button>
+            <button id="resetTouch" class="secondary">Reset</button>
+          </div>
+        </div>
+
+        <div class="touch-status">
+          <strong id="touchCount">0 / 0</strong>
+          <span id="touchResult">Ready</span>
+        </div>
+
+        <div id="touchGrid" class="touch-grid"></div>
+      </section>
+
       <section id="keyboard" class="panel">
-        <div class="panel-header">
-          <div><h2>Japanese Keyboard Test</h2><p>JIS layout for Japanese laptops. Press each key and confirm it responds.</p></div>
-          <button id="resetKeyboard" class="secondary-btn">Reset</button>
+        <div class="panel-head">
+          <h2>Japanese Keyboard Test</h2>
+          <button id="resetKeyboard" class="secondary">Reset</button>
         </div>
+
         <div class="stats">
-          <div class="stat-card"><span class="stat-label">Keys tested</span><strong id="keyCount">0</strong></div>
-          <div class="stat-card wide-stat"><span class="stat-label">Last key</span><strong id="lastKey">-</strong></div>
+          <div class="stat">
+            <span>Keys</span>
+            <strong id="keyCount">0</strong>
+          </div>
+          <div class="stat wide">
+            <span>Last Key</span>
+            <strong id="lastKey">-</strong>
+          </div>
         </div>
-        <div class="keyboard-wrap"><div id="keyboardLayout" class="keyboard"></div></div>
+
+        <div class="keyboard-wrap">
+          <div id="keyboardLayout" class="keyboard"></div>
+        </div>
       </section>
+
       <section id="speaker" class="panel">
-        <div class="panel-header"><div><h2>Speaker Test</h2><p>Play the built-in music file and check left, right, and stereo output.</p></div></div>
-        <div class="control-grid">
-          <button id="playLeft" class="primary-btn">Play Left</button>
-          <button id="playRight" class="primary-btn">Play Right</button>
-          <button id="playStereo" class="primary-btn">Play Stereo</button>
-          <button id="pauseMusic" class="secondary-btn">Pause</button>
-          <button id="stopMusic" class="secondary-btn">Stop</button>
+        <div class="panel-head">
+          <h2>Speaker Test</h2>
         </div>
-        <div class="audio-panel">
-          <div class="audio-row"><span id="musicStatus">Ready</span><span id="timeLabel">0:00 / 0:00</span></div>
-          <input id="seekBar" type="range" min="0" max="100" value="0" />
-          <label class="range-label">Volume<input id="volume" type="range" min="0" max="1" step="0.01" value="0.4" /></label>
+
+        <div class="controls">
+          <button id="playLeft" class="primary">Play Left</button>
+          <button id="playRight" class="primary">Play Right</button>
+          <button id="playStereo" class="primary">Play Stereo</button>
+          <button id="pauseMusic" class="secondary">Pause</button>
+          <button id="stopMusic" class="secondary">Stop</button>
         </div>
-        <div class="info-card">Place your music file at assets/speaker-test.mp3.</div>
+
+        <div class="player">
+          <div class="player-row">
+            <span id="musicStatus">Ready</span>
+            <span id="timeLabel">0:00 / 0:00</span>
+          </div>
+          <input id="seekBar" type="range" min="0" max="100" value="0">
+          <label>
+            Volume
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="0.4">
+          </label>
+        </div>
       </section>
+
       <section id="microphone" class="panel">
-        <div class="panel-header"><div><h2>Microphone Test</h2><p>Start the microphone and speak. The input meter should move clearly.</p></div></div>
-        <div class="control-grid"><button id="startMic" class="primary-btn">Start Microphone</button><button id="stopMic" class="secondary-btn">Stop Microphone</button></div>
-        <div class="meter-card"><div class="meter"><div id="micMeter" class="meter-fill"></div></div><div id="micPercent" class="meter-number">0%</div><div id="micText" class="info-card">Microphone stopped.</div></div>
+        <div class="panel-head">
+          <h2>Microphone Test</h2>
+        </div>
+
+        <div class="controls">
+          <button id="startMic" class="primary">Start</button>
+          <button id="stopMic" class="secondary">Stop</button>
+        </div>
+
+        <div class="meter">
+          <div id="micMeter"></div>
+        </div>
+        <div id="micPercent" class="percent">0%</div>
       </section>
+
       <section id="camera" class="panel">
-        <div class="panel-header"><div><h2>Camera Test</h2><p>Check camera image quality, focus, color, and dust.</p></div></div>
-        <div class="control-grid"><button id="startCamera" class="primary-btn">Start Camera</button><button id="stopCamera" class="secondary-btn">Stop Camera</button><button id="capture" class="secondary-btn">Capture Photo</button></div>
-        <select id="cameraSelect"></select><video id="video" autoplay playsinline></video><canvas id="canvas"></canvas>
+        <div class="panel-head">
+          <h2>Camera Test</h2>
+        </div>
+
+        <div class="controls">
+          <button id="startCamera" class="primary">Start Camera</button>
+          <button id="stopCamera" class="secondary">Stop Camera</button>
+          <button id="capture" class="secondary">Capture</button>
+        </div>
+
+        <select id="cameraSelect"></select>
+        <video id="video" autoplay playsinline></video>
+        <canvas id="photoCanvas"></canvas>
+      </section>
+
+      <section id="battery" class="panel">
+        <div class="panel-head">
+          <h2>Battery Test</h2>
+        </div>
+
+        <div class="command-box">
+          <code id="batteryCommand">powercfg /batteryreport</code>
+          <button id="copyBattery" class="primary">Copy</button>
+        </div>
       </section>
     </main>
   </div>
-  <div id="displayOverlay" class="display-overlay"><div id="displayHelp">Space / Click: Next Color · Esc: Exit</div></div>
+
+  <div id="displayOverlay" class="display-overlay"></div>
   <audio id="musicAudio" src="assets/speaker-test.mp3" preload="auto"></audio>
+
   <script src="js/app.js"></script>
 </body>
 </html>

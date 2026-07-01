@@ -1,19 +1,13 @@
-# PC Quick Test v5
-
-Browser-based PC store inspection website.
-
-## Tests
+# PC Quick Test
 
 Display
-Japanese keyboard
+Touch
+Keyboard
 Speaker
 Microphone
 Camera
+Battery
 
-## Speaker music
-
-Put your music file here:
+Put speaker music here:
 
 assets/speaker-test.mp3
-
-The Speaker page will play that file automatically from the folder.
